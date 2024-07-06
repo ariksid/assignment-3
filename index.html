@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Workshop Appointment</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Book an Appointment</h1>
+        <form id="appointmentForm" method="POST" action="book_appointment.php" onsubmit="return validateForm()">
+            <label for="clientName">Name:</label>
+            <input type="text" id="clientName" name="client_name" required>
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="carColor">Car Color:</label>
+            <input type="text" id="carColor" name="car_color">
+
+            <label for="carLicense">Car License Number:</label>
+            <input type="text" id="carLicence" name="car_license" required>
+
+            <label for="carEngine">Car Engine Number:</label>
+            <input type="text" id="carEngine" name="car_engine" required>
+
+            <label for="appointmentDate">Appointment Date:</label>
+            <input type="date" id="appointmentDate" name="appointment_date" required>
+
+            <label for="mechanic">Select Mechanic:</label>
+            <select id="mechanic" name="mechanic_id" required>
+                
+            </select>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+
+    
+    <script>
+        function validateForm() {
+            const clientName = document.getElementById('clientName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const carLicense = document.getElementById('carLicense').value.trim();
+            const carEngine = document.getElementById('carEngine').value.trim();
+            const appointmentDate = document.getElementById('appointmentDate').value;
+            const mechanic = document.getElementById('mechanic').value;
+
+            if (!clientName || !phone || !carLicense || !carEngine || !appointmentDate || !mechanic) {
+                alert("All fields must be filled out");
+                return false;
+            }
+
+            const phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                alert("Invalid phone number format. It should be 10 digits.");
+                return false;
+            }
+
+            return true;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+    fetch('get_mechanics.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error fetching mechanics:', data.error);
+                alert('Failed to load mechanics.');
+                return;
+            }
+
+            const mechanicSelect = document.getElementById('mechanic');
+            data.forEach(mechanic => {
+                const option = document.createElement('option');
+                option.value = mechanic.id;
+                option.textContent = `${mechanic.name} (Available slots: ${mechanic.available_slots})`;
+                mechanicSelect.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to load mechanics.');
+        });
+});
+    </script>
+</body>
+</html>

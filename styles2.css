@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('b4.jpg'); /* Add your background image */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+/* Navbar Styles */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    background-color: rgba(44, 62, 80, 0.9); 
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #34495e;
+    border-radius: 5px;
+    text-align: center;
+}
+
+nav a:hover {
+    background-color: #1abc9c;
+}
+
+.container {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 5px;
+    width: 80%; 
+    margin: 30px auto 30px 250px; 
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid white;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: rgba(44, 62, 80, 0.9);
+}
+
+td {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+}
+
+button {
+    background-color: #1abc9c;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #16a085;
+}
+
+#editModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+}
+
+#editModal form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#editModal label, #editModal input, #editModal select, #editModal button {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+#editModal button {
+    background-color: #1abc9c;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+
+#editModal button:hover {
+    background-color: #16a085;
+}
+
+#editModal input, #editModal select {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+#editModal label {
+    text-align: left;
+    width: calc(100% - 20px);
+    margin-left: 10px;
+}
